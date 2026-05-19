@@ -1,0 +1,2156 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雅思写作备考</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1c1917;
+  --paper: #faf7f2;
+  --cream: #f0ebe0;
+  --card: #ffffff;
+  --accent: #b5451b;
+  --accent-hover: #9a3a16;
+  --accent-light: #fbeee9;
+  --gold: #a07830;
+  --gold-light: #fdf3e3;
+  --muted: #78716c;
+  --border: #e0d9ce;
+  --border-dark: #c8bfb0;
+  --success: #2d6a4f;
+  --success-light: #e8f5ee;
+  --info: #1e3a5f;
+  --info-light: #e8eef8;
+  --warn: #92400e;
+  --warn-light: #fef3c7;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+  font-size: 14px;
+}
+
+/* ── HEADER ── */
+.header {
+  background: var(--ink);
+  padding: 0 2rem;
+  display: flex;
+  align-items: stretch;
+  border-bottom: 3px solid var(--accent);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header-brand {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 0;
+  margin-right: 2.5rem;
+  border-right: 1px solid #333;
+  padding-right: 2rem;
+}
+.brand-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: #f5f0e8;
+  letter-spacing: .02em;
+}
+.brand-name em { color: var(--gold); font-style: normal; }
+.brand-sub { font-size: 11px; color: #666; margin-top: 2px; font-weight: 300; }
+.nav {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  flex: 1;
+}
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: .75rem 1.25rem;
+  background: none;
+  border: none;
+  color: #888;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -3px;
+  transition: all .15s;
+  letter-spacing: .02em;
+}
+.nav-btn:hover { color: #ccc; }
+.nav-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+.nav-icon { font-size: 16px; }
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin-left: auto;
+}
+.streak-badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #2a2520;
+  border: 1px solid #444;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 12px;
+  color: var(--gold);
+  font-weight: 500;
+}
+.progress-ring-wrap { position: relative; width: 36px; height: 36px; }
+.progress-ring { transform: rotate(-90deg); }
+.progress-ring-bg { fill: none; stroke: #333; stroke-width: 3; }
+.progress-ring-fill { fill: none; stroke: var(--gold); stroke-width: 3; stroke-linecap: round; transition: stroke-dashoffset .5s ease; }
+.ring-label {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; font-weight: 600; color: var(--gold);
+}
+
+/* ── SCREENS ── */
+.screen { display: none; }
+.screen.active { display: block; animation: fadeIn .2s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+.main { max-width: 960px; margin: 0 auto; padding: 2rem; }
+
+/* ── PAGE HEADER ── */
+.page-header { margin-bottom: 2rem; }
+.page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  color: var(--ink);
+  margin-bottom: .35rem;
+}
+.page-sub { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+/* ── CARDS ── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.card-header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--cream);
+}
+.card-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: .02em;
+}
+.card-body { padding: 1.25rem; }
+
+/* ── DAILY CHECKIN ── */
+.daily-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.session-plan { display: flex; flex-direction: column; gap: .75rem; }
+.session-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all .15s;
+  position: relative;
+}
+.session-block:hover { border-color: var(--accent); }
+.session-block.completed { border-color: var(--success); background: var(--success-light); }
+.session-block.active-session { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light); }
+.session-num {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: 1.5px solid var(--border-dark);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 600; color: var(--muted);
+  flex-shrink: 0;
+}
+.session-block.completed .session-num {
+  background: var(--success);
+  border-color: var(--success);
+  color: white;
+}
+.session-block.completed .session-num::after { content: '✓'; }
+.session-block:not(.completed) .session-num { }
+.session-info { flex: 1; }
+.session-name { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+.session-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.session-time {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 500;
+  background: var(--accent-light);
+  padding: 2px 8px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+/* Timer card */
+.timer-card { position: sticky; top: 80px; }
+.big-timer {
+  text-align: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.timer-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: .5rem; }
+.timer-digits {
+  font-family: 'DM Mono', monospace;
+  font-size: 3rem;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: .05em;
+  line-height: 1;
+}
+.timer-digits.warn { color: var(--accent); }
+.timer-session-name {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: .5rem;
+}
+.timer-controls {
+  display: flex;
+  gap: .5rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+.t-btn {
+  flex: 1;
+  padding: .6rem;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .15s;
+  color: var(--ink);
+}
+.t-btn.primary { background: var(--accent); color: white; border-color: var(--accent); }
+.t-btn.primary:hover { background: var(--accent-hover); }
+.t-btn:hover:not(.primary) { border-color: var(--border-dark); }
+.session-list-mini { padding: 1rem 1.25rem; }
+.mini-session {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .4rem 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+.mini-session:last-child { border-bottom: none; }
+.mini-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--border-dark);
+  flex-shrink: 0;
+}
+.mini-dot.done { background: var(--success); }
+.mini-dot.current { background: var(--accent); }
+.mini-name { font-size: 12px; color: var(--muted); flex: 1; }
+.mini-dur { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); }
+/* Progress summary */
+.progress-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .75rem;
+  margin-bottom: 1.25rem;
+}
+.prog-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem;
+  text-align: center;
+}
+.prog-num { font-family: 'Playfair Display', serif; font-size: 1.75rem; color: var(--ink); }
+.prog-label { font-size: 11px; color: var(--muted); margin-top: 2px; }
+/* Calendar strip */
+.calendar-strip {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  padding: 1rem 1.25rem;
+}
+.cal-day {
+  width: 28px; height: 28px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all .15s;
+  background: var(--cream);
+}
+.cal-day.done { background: var(--success); border-color: var(--success); color: white; }
+.cal-day.today { border-color: var(--accent); color: var(--accent); font-weight: 700; }
+.cal-day.today.done { background: var(--success); border-color: var(--success); color: white; }
+
+/* ── KNOWLEDGE BASE ── */
+.kb-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 1.25rem;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px;
+}
+.kb-tab {
+  flex: 1;
+  padding: .5rem .75rem;
+  border-radius: 4px;
+  border: none;
+  background: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all .15s;
+  text-align: center;
+}
+.kb-tab.active {
+  background: var(--card);
+  color: var(--accent);
+  box-shadow: 0 1px 3px rgba(0,0,0,.08);
+}
+.kb-panel { display: none; }
+.kb-panel.active { display: block; animation: fadeIn .15s ease; }
+/* Vocab table */
+.vocab-section { margin-bottom: 1.5rem; }
+.vocab-section-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--muted);
+  padding: .5rem 0;
+  margin-bottom: .5rem;
+  border-bottom: 1px solid var(--border);
+}
+.vocab-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  font-size: 13px;
+}
+.vocab-row { display: contents; }
+.vocab-cell {
+  background: var(--card);
+  padding: .6rem .875rem;
+  line-height: 1.5;
+}
+.vocab-row:first-child .vocab-cell {
+  background: var(--cream);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.vocab-basic { color: var(--muted); text-decoration: line-through; font-size: 12px; }
+.vocab-advanced { color: var(--ink); font-weight: 500; }
+.vocab-note { color: var(--muted); font-size: 12px; font-style: italic; }
+/* Sentence patterns */
+.pattern-group { margin-bottom: 1.5rem; }
+.pattern-group-title {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: .75rem;
+}
+.pattern-group-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.pattern-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  margin-bottom: .5rem;
+  overflow: hidden;
+}
+.pattern-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--accent);
+  padding: .4rem .875rem;
+  background: var(--accent-light);
+  border-bottom: 1px solid var(--border);
+}
+.pattern-text {
+  font-size: 13px;
+  padding: .6rem .875rem;
+  line-height: 1.6;
+  color: var(--ink);
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+}
+.pattern-blank { color: var(--accent); font-style: normal; text-decoration: underline dotted; }
+.pattern-example {
+  font-size: 12px;
+  padding: .4rem .875rem .6rem;
+  color: var(--muted);
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  border-top: 1px solid var(--border);
+  line-height: 1.5;
+}
+/* Prepositions */
+.prep-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .75rem;
+}
+.prep-group {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.prep-group-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--muted);
+  padding: .5rem .875rem;
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+}
+.prep-item {
+  padding: .45rem .875rem;
+  font-size: 13px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.prep-item:last-child { border-bottom: none; }
+.prep-correct { font-weight: 500; color: var(--success); }
+.prep-wrong { color: var(--muted); text-decoration: line-through; font-size: 12px; }
+/* Grammar */
+.grammar-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  margin-bottom: .75rem;
+  overflow: hidden;
+}
+.grammar-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+  padding: .6rem .875rem;
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+}
+.grammar-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.grammar-row:last-child { border-bottom: none; }
+.grammar-cell {
+  background: var(--card);
+  padding: .5rem .875rem;
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+.g-label { background: var(--cream); font-size: 11px; color: var(--muted); font-weight: 500; }
+.g-wrong { color: var(--warn); }
+.g-right { color: var(--success); font-weight: 500; }
+
+/* ── PHASE PLAN ── */
+.phase-grid { display: flex; flex-direction: column; gap: 1.25rem; }
+.phase-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.phase-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  user-select: none;
+  transition: background .15s;
+}
+.phase-header:hover { background: var(--cream); }
+.phase-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--accent);
+  line-height: 1;
+  min-width: 2rem;
+}
+.phase-info { flex: 1; }
+.phase-name { font-size: 14px; font-weight: 600; color: var(--ink); }
+.phase-days { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.phase-tags { display: flex; gap: .4rem; flex-wrap: wrap; }
+.ptag {
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+}
+.ptag-w { background: var(--accent-light); color: var(--accent); }
+.ptag-r { background: var(--gold-light); color: var(--gold); }
+.ptag-g { background: var(--success-light); color: var(--success); }
+.ptag-b { background: var(--info-light); color: var(--info); }
+.phase-chevron { color: var(--muted); font-size: 18px; transition: transform .2s; }
+.phase-body { display: none; padding: 1.25rem; border-top: 1px solid var(--border); }
+.phase-body.open { display: block; }
+.phase-chevron.open { transform: rotate(90deg); }
+/* Day tasks */
+.day-task-list { display: flex; flex-direction: column; gap: .5rem; margin-bottom: 1.25rem; }
+.day-task {
+  display: flex;
+  align-items: flex-start;
+  gap: .875rem;
+  padding: .75rem 1rem;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.task-time {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  background: var(--accent-light);
+  padding: 2px 7px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  font-weight: 500;
+}
+.task-content { flex: 1; }
+.task-name { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+.task-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+/* Knowledge links */
+.kb-links { display: flex; flex-direction: column; gap: .4rem; }
+.kb-link-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--muted);
+  margin-bottom: .4rem;
+}
+.kb-link-item {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .5rem .75rem;
+  background: var(--info-light);
+  border: 1px solid #c5d5eb;
+  border-radius: 4px;
+  font-size: 12px;
+  color: var(--info);
+  cursor: pointer;
+  transition: all .15s;
+}
+.kb-link-item:hover { background: #d0e0f0; }
+.kb-link-icon { font-size: 14px; }
+/* Goal box */
+.goal-box {
+  background: var(--warn-light);
+  border: 1px solid #f6d860;
+  border-radius: 4px;
+  padding: .75rem 1rem;
+  margin-top: 1rem;
+  font-size: 12px;
+  color: var(--warn);
+  line-height: 1.6;
+}
+.goal-box strong { font-weight: 600; }
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .5rem 1.1rem;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .15s;
+  color: var(--ink);
+}
+.btn:hover { border-color: var(--border-dark); }
+.btn-accent { background: var(--accent); color: white; border-color: var(--accent); }
+.btn-accent:hover { background: var(--accent-hover); }
+.btn-sm { padding: .3rem .75rem; font-size: 12px; }
+
+/* ── MISC ── */
+.tag {
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+}
+.tag-accent { background: var(--accent-light); color: var(--accent); }
+.tag-gold { background: var(--gold-light); color: var(--gold); }
+.tag-success { background: var(--success-light); color: var(--success); }
+.divider { height: 1px; background: var(--border); margin: 1.25rem 0; }
+.row { display: flex; align-items: center; gap: .75rem; }
+.spacer { flex: 1; }
+
+/* Notification */
+.notif {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: var(--ink);
+  color: white;
+  padding: .75rem 1.25rem;
+  border-radius: 6px;
+  font-size: 13px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all .3s;
+  pointer-events: none;
+  z-index: 999;
+  border-left: 3px solid var(--gold);
+}
+.notif.show { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-brand">
+    <div class="brand-name">雅思写作 <em>备考</em></div>
+    <div class="brand-sub">IELTS Writing Preparation</div>
+  </div>
+  <nav class="nav">
+    <button class="nav-btn active" onclick="showScreen('checkin')" id="nav-checkin">
+      <span class="nav-icon">📅</span> 每日打卡
+    </button>
+    <button class="nav-btn" onclick="showScreen('knowledge')" id="nav-knowledge">
+      <span class="nav-icon">📚</span> 知识库
+    </button>
+    <button class="nav-btn" onclick="showScreen('phases')" id="nav-phases">
+      <span class="nav-icon">🗓️</span> 阶段计划
+    </button>
+  </nav>
+  <div class="header-right">
+    <div class="streak-badge">🔥 <span id="streak-count">0</span> 天连续</div>
+    <div class="progress-ring-wrap" title="今日进度">
+      <svg class="progress-ring" width="36" height="36" viewBox="0 0 36 36">
+        <circle class="progress-ring-bg" cx="18" cy="18" r="15"/>
+        <circle class="progress-ring-fill" id="ring-fill" cx="18" cy="18" r="15"
+          stroke-dasharray="94.25" stroke-dashoffset="94.25"/>
+      </svg>
+      <div class="ring-label" id="ring-pct">0%</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- SCREEN 1: 每日打卡                         -->
+<!-- ══════════════════════════════════════════ -->
+<div class="screen active" id="screen-checkin">
+<div class="main">
+
+  <div class="page-header">
+    <div class="row">
+      <div class="page-title">今日打卡</div>
+      <span id="today-date" class="tag tag-gold" style="margin-left:.75rem"></span>
+      <div class="spacer"></div>
+      <button class="btn btn-sm" onclick="resetToday()">重置今天</button>
+    </div>
+    <div class="page-sub" style="margin-top:.5rem">每日写作练习 · 共80分钟 · 完成三个环节即可打卡</div>
+  </div>
+
+  <!-- Progress summary -->
+  <div class="progress-summary">
+    <div class="prog-card">
+      <div class="prog-num" id="days-done">0</div>
+      <div class="prog-label">已完成天数</div>
+    </div>
+    <div class="prog-card">
+      <div class="prog-num" id="sessions-today">0/3</div>
+      <div class="prog-label">今日环节</div>
+    </div>
+    <div class="prog-card">
+      <div class="prog-num" id="essays-written">0</div>
+      <div class="prog-label">已写作篇数</div>
+    </div>
+  </div>
+
+  <!-- Calendar -->
+  <div class="card" style="margin-bottom:1.25rem">
+    <div class="card-header">
+      <div class="card-title">打卡日历 · 20天冲刺</div>
+      <span class="tag tag-accent" id="cal-progress">Day 1</span>
+    </div>
+    <div class="calendar-strip" id="calendar-strip"></div>
+  </div>
+
+  <!-- Main daily grid -->
+  <div class="daily-grid">
+    <div>
+      <!-- Session blocks -->
+      <div class="session-plan" id="session-plan">
+
+        <!-- Session 1: 精读范文 -->
+        <div class="session-block" id="block-0" onclick="startSession(0)">
+          <div class="session-num" id="snum-0">1</div>
+          <div class="session-info">
+            <div class="session-name">精读范文</div>
+            <div class="session-desc">阅读高分范文，拆解结构、标记衔接词、提取高级词汇。点击查看范文 →</div>
+          </div>
+          <div class="session-time">20 分钟</div>
+        </div>
+        <!-- Essay Modal Trigger -->
+        <div style="margin:-4px 0 8px 0; display:flex; gap:.5rem; padding-left:2.5rem">
+          <button class="btn btn-sm" onclick="event.stopPropagation(); openEssay('task2')" style="font-size:11px">📄 Task 2 范文</button>
+          <button class="btn btn-sm" onclick="event.stopPropagation(); openEssay('task1')" style="font-size:11px">📊 Task 1 范文</button>
+        </div>
+
+        <!-- Session 2: 限时写作 -->
+        <div class="session-block" id="block-1" onclick="startSession(1)">
+          <div class="session-num" id="snum-1">2</div>
+          <div class="session-info">
+            <div class="session-name">限时写作</div>
+            <div class="session-desc">严格计时，不查字典，模拟考场条件。点击获取今日题目 →</div>
+          </div>
+          <div class="session-time">40 分钟</div>
+        </div>
+        <!-- Prompt Trigger -->
+        <div style="margin:-4px 0 8px 0; display:flex; gap:.5rem; padding-left:2.5rem">
+          <button class="btn btn-sm btn-accent" onclick="event.stopPropagation(); openPrompt('task2')" style="font-size:11px">✏️ Task 2 题目</button>
+          <button class="btn btn-sm" onclick="event.stopPropagation(); openPrompt('task1')" style="font-size:11px">📈 Task 1 题目</button>
+        </div>
+
+        <!-- Session 3: 自评 -->
+        <div class="session-block" id="block-2" onclick="startSession(2)">
+          <div class="session-num" id="snum-2">3</div>
+          <div class="session-info">
+            <div class="session-name">自评与复盘</div>
+            <div class="session-desc">按TR / CC / LR / GRA四维度自评，找出本篇1–2个最主要错误，记录到错题本。对照知识库查看对应改进方法。</div>
+          </div>
+          <div class="session-time">20 分钟</div>
+        </div>
+
+      </div>
+
+      <!-- Complete day button -->
+      <div style="margin-top:1rem; display:flex; gap:.75rem; align-items:center">
+        <button class="btn btn-accent" onclick="completeDay()" id="complete-btn">
+          ✓ 完成今日打卡
+        </button>
+        <span class="tag tag-accent" id="essays-tag" style="display:none">+1 篇写作</span>
+      </div>
+
+      <!-- Today's focus tip -->
+      <div class="card" style="margin-top:1.25rem">
+        <div class="card-header">
+          <div class="card-title">💡 今日重点提示</div>
+          <span class="tag tag-gold" id="tip-tag">写作技巧</span>
+        </div>
+        <div class="card-body">
+          <div id="daily-tip" style="font-size:13px; line-height:1.75; color:#333"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timer panel -->
+    <div>
+      <div class="card timer-card">
+        <div class="big-timer">
+          <div class="timer-label" id="timer-label">选择环节开始计时</div>
+          <div class="timer-digits" id="timer-display">00:00</div>
+          <div class="timer-session-name" id="timer-session-name">点击左侧环节开始</div>
+        </div>
+        <div class="timer-controls">
+          <button class="t-btn primary" id="start-btn" onclick="toggleTimer()">▶ 开始</button>
+          <button class="t-btn" onclick="resetTimer()">↺ 重置</button>
+        </div>
+        <div class="session-list-mini" id="mini-session-list">
+          <div class="mini-session" onclick="startSession(0)">
+            <div class="mini-dot" id="mdot-0"></div>
+            <div class="mini-name">精读范文</div>
+            <div class="mini-dur">20min</div>
+          </div>
+          <div class="mini-session" onclick="startSession(1)">
+            <div class="mini-dot" id="mdot-1"></div>
+            <div class="mini-name">限时写作</div>
+            <div class="mini-dur">40min</div>
+          </div>
+          <div class="mini-session" onclick="startSession(2)">
+            <div class="mini-dot" id="mdot-2"></div>
+            <div class="mini-name">自评复盘</div>
+            <div class="mini-dur">20min</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- SCREEN 2: 知识库                           -->
+<!-- ══════════════════════════════════════════ -->
+<div class="screen" id="screen-knowledge">
+<div class="main">
+
+  <div class="page-header">
+    <div class="page-title">知识库</div>
+    <div class="page-sub">词汇替换 · 句型句式 · 介词搭配 · 语法要点 · 随时查阅，写作时的核心参考</div>
+  </div>
+
+  <div class="kb-tabs">
+    <button class="kb-tab active" onclick="showKb('vocab')">📖 词汇替换</button>
+    <button class="kb-tab" onclick="showKb('patterns')">✍️ 句型句式</button>
+    <button class="kb-tab" onclick="showKb('prepositions')">🔗 介词搭配</button>
+    <button class="kb-tab" onclick="showKb('grammar')">⚙️ 语法要点</button>
+  </div>
+
+  <!-- VOCAB -->
+  <div class="kb-panel active" id="kb-vocab">
+
+    <div class="vocab-section">
+      <div class="vocab-section-title">基础词 → 高分替换</div>
+      <div class="vocab-grid">
+        <div class="vocab-row">
+          <div class="vocab-cell">基础词</div>
+          <div class="vocab-cell">高分替换</div>
+          <div class="vocab-cell">使用说明</div>
+        </div>
+        <div class="vocab-row">
+          <div class="vocab-cell"><span class="vocab-basic">important</span></div>
+          <div class="vocab-cell"><span class="vocab-advanced">crucial / vital / significant / paramount / indispensable</span></div>
+          <div class="vocab-cell vocab-note">paramount 强调"最重要的"；indispensable 强调"不可或缺"</div>
+        </div>
+        <div class="vocab-row">
+          <div class="vocab-cell"><span class="vocab-basic">good</span></div>
+          <div class="vocab-cell"><span class="vocab-advanced">beneficial / advantageous / favourable / constructive</span></div>
+          <div class="vocab-cell vocab-note">beneficial 最常用；constructive 多用于意见和反馈</div>
+        </div>
+        <div class="vocab-row">
+          <div class="vocab-cell"><span class="vocab-basic">bad</span></div>
+          <div class="vocab-cell"><span class="vocab-advanced">detrimental / harmful / adverse / damaging</span></div>
+          <div class="vocab-cell vocab-note">detrimental to… / adverse effects on…</div>
+        </div>
+        <div class="vocab-row">
+          <div class="vocab-cell"><span class="vocab-basic">improve</span></div>
+          <div class="vocab-cell"><span class="vocab-advanced">enhance / boost / elevate / advance / strengthen</span></div>
+          <div class="vocab-cell vocab-note">enhance 最学术；boost 较口语但可用</div>
+        </div>
+        <div class="vocab-row">
+          <div class="vocab-cell"><span class="vocab-basic">show</span></div>
+          <div class="vocab-cell"><span class="vocab-advanced">demonstrate / indicate / suggest / reveal / illustrate</span></div>
+          <div class="vocab-cell vocab-note">数据用 indicate；例子用 illustrate</div>
+        </div>
+        <div class="vocab-row">
+          <div class="vocab-cell"><span class="vocab-basic">think</span></div>
+          <div class="vocab-cell"><span class="vocab-advanced">argue / contend / maintain / assert / posit</span></div>
+          <div class="vocab-cell vocab-note">学术写作用 argue / contend 表示"主张"</div>
+        </div>
+        <div class="vocab-row">
+          <div class="vocab-cell"><span class="vocab-basic">change</span></div>
+          <div class="vocab-cell"><span class="vocab-advanced">transform / alter / reshape / shift / revolutionise</span></div>
+          <div class="vocab-cell vocab-note">transform 强调根本性变化；shift 强调方向转变</div>
+        </div>
+        <div class="vocab-row">
+          <div class="vocab-cell"><span class="vocab-basic">people</span></div>
+          <div class="vocab-cell"><span class="vocab-advanced">individuals / the general public / citizens / members of society</span></div>
+          <div class="vocab-cell vocab-note">全文交替使用，避免重复</div>
+        </div>
+        <div class="vocab-row">
+          <div class="vocab-cell"><span class="vocab-basic">health</span></div>
+          <div class="vocab-cell"><span class="vocab-advanced">well-being / public health / physical fitness / healthcare</span></div>
+          <div class="vocab-cell vocab-note">well-being 更广泛，包含心理健康</div>
+        </div>
+        <div class="vocab-row">
+          <div class="vocab-cell"><span class="vocab-basic">use</span></div>
+          <div class="vocab-cell"><span class="vocab-advanced">utilise / employ / implement / adopt / leverage</span></div>
+          <div class="vocab-cell vocab-note">implement 多用于政策；adopt 多用于方法</div>
+        </div>
+        <div class="vocab-row">
+          <div class="vocab-cell"><span class="vocab-basic">big / large</span></div>
+          <div class="vocab-cell"><span class="vocab-advanced">substantial / considerable / significant / extensive</span></div>
+          <div class="vocab-cell vocab-note">a substantial increase / considerable effort</div>
+        </div>
+        <div class="vocab-row">
+          <div class="vocab-cell"><span class="vocab-basic">problem</span></div>
+          <div class="vocab-cell"><span class="vocab-advanced">challenge / issue / concern / dilemma / obstacle</span></div>
+          <div class="vocab-cell vocab-note">challenge 较正面；dilemma 强调两难处境</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vocab-section">
+      <div class="vocab-section-title">话题专项词汇</div>
+      <div class="vocab-grid">
+        <div class="vocab-row">
+          <div class="vocab-cell">话题</div>
+          <div class="vocab-cell">核心词汇</div>
+          <div class="vocab-cell">常用搭配</div>
+        </div>
+        <div class="vocab-row">
+          <div class="vocab-cell">健康</div>
+          <div class="vocab-cell">sedentary lifestyle / preventive healthcare / chronic disease / obesity / well-being</div>
+          <div class="vocab-cell vocab-note">adopt a sedentary lifestyle / address chronic disease</div>
+        </div>
+        <div class="vocab-row">
+          <div class="vocab-cell">教育</div>
+          <div class="vocab-cell">academic performance / critical thinking / vocational training / lifelong learning / curriculum</div>
+          <div class="vocab-cell vocab-note">foster critical thinking / reform the curriculum</div>
+        </div>
+        <div class="vocab-row">
+          <div class="vocab-cell">科技</div>
+          <div class="vocab-cell">artificial intelligence / digital literacy / automation / data privacy / innovation</div>
+          <div class="vocab-cell vocab-note">pose a threat to privacy / drive innovation</div>
+        </div>
+        <div class="vocab-row">
+          <div class="vocab-cell">环境</div>
+          <div class="vocab-cell">carbon footprint / renewable energy / biodiversity / sustainability / greenhouse gas</div>
+          <div class="vocab-cell vocab-note">reduce carbon footprint / embrace renewable energy</div>
+        </div>
+        <div class="vocab-row">
+          <div class="vocab-cell">社会</div>
+          <div class="vocab-cell">socioeconomic disparity / urbanisation / social cohesion / inequality / marginalised groups</div>
+          <div class="vocab-cell vocab-note">bridge the gap / widen socioeconomic disparity</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PATTERNS -->
+  <div class="kb-panel" id="kb-patterns">
+
+    <div class="pattern-group">
+      <div class="pattern-group-title">Introduction 句型</div>
+
+      <div class="pattern-item">
+        <div class="pattern-label">背景句（改写题目）</div>
+        <div class="pattern-text">In recent years, there has been growing debate over whether <span class="pattern-blank">[topic]</span> is truly effective.</div>
+        <div class="pattern-example">例：In recent years, there has been growing debate over whether increasing sports facilities truly improves public health.</div>
+      </div>
+      <div class="pattern-item">
+        <div class="pattern-label">两方观点句</div>
+        <div class="pattern-text">While some argue that <span class="pattern-blank">[view A]</span>, others contend that <span class="pattern-blank">[view B]</span>.</div>
+        <div class="pattern-example">例：While some argue that more gyms would encourage exercise, others contend that education and policy changes are far more effective.</div>
+      </div>
+      <div class="pattern-item">
+        <div class="pattern-label">立场句（Thesis Statement）</div>
+        <div class="pattern-text">In my view, although <span class="pattern-blank">[concession]</span>, <span class="pattern-blank">[your position]</span> is ultimately more <span class="pattern-blank">[adjective]</span>.</div>
+        <div class="pattern-example">例：In my view, although sports facilities play a role, raising public health awareness is ultimately more impactful.</div>
+      </div>
+    </div>
+
+    <div class="pattern-group">
+      <div class="pattern-group-title">Body 段落句型</div>
+
+      <div class="pattern-item">
+        <div class="pattern-label">Topic Sentence</div>
+        <div class="pattern-text">One of the most compelling arguments in favour of <span class="pattern-blank">[position]</span> is that <span class="pattern-blank">[point]</span>.</div>
+        <div class="pattern-example">例：One of the most compelling arguments in favour of increased sports facilities is that they provide accessible venues for regular exercise.</div>
+      </div>
+      <div class="pattern-item">
+        <div class="pattern-label">Explanation 句</div>
+        <div class="pattern-text">This is primarily because <span class="pattern-blank">[reason]</span>, which in turn <span class="pattern-blank">[consequence]</span>.</div>
+        <div class="pattern-example">例：This is primarily because convenient access removes a key barrier to exercise, which in turn encourages more consistent physical activity.</div>
+      </div>
+      <div class="pattern-item">
+        <div class="pattern-label">Example 句</div>
+        <div class="pattern-text">For instance, in countries such as <span class="pattern-blank">[country]</span>, research has shown that <span class="pattern-blank">[finding]</span>.</div>
+        <div class="pattern-example">例：For instance, in countries such as Finland, research has shown that neighbourhoods with more public sports facilities report lower rates of obesity.</div>
+      </div>
+      <div class="pattern-item">
+        <div class="pattern-label">让步句</div>
+        <div class="pattern-text">Admittedly, <span class="pattern-blank">[opposing view]</span>; however, this does not necessarily mean that <span class="pattern-blank">[your counter]</span>.</div>
+        <div class="pattern-example">例：Admittedly, building facilities requires considerable investment; however, this does not necessarily mean that the long-term health benefits are not worth the cost.</div>
+      </div>
+    </div>
+
+    <div class="pattern-group">
+      <div class="pattern-group-title">Conclusion 句型</div>
+
+      <div class="pattern-item">
+        <div class="pattern-label">重申立场</div>
+        <div class="pattern-text">In conclusion, while both sides of the argument have merit, I would maintain that <span class="pattern-blank">[position]</span>.</div>
+        <div class="pattern-example">例：In conclusion, while both approaches have value, I would maintain that public awareness campaigns should take precedence over facility construction.</div>
+      </div>
+      <div class="pattern-item">
+        <div class="pattern-label">综合总结</div>
+        <div class="pattern-text">On balance, the evidence suggests that <span class="pattern-blank">[position]</span>, provided that <span class="pattern-blank">[condition]</span>.</div>
+        <div class="pattern-example">例：On balance, the evidence suggests that a multi-pronged approach is most effective, provided that governments prioritise long-term behavioural change.</div>
+      </div>
+    </div>
+
+    <div class="pattern-group">
+      <div class="pattern-group-title">高分复杂句型</div>
+
+      <div class="pattern-item">
+        <div class="pattern-label">倒装句（Only when）</div>
+        <div class="pattern-text">Only when <span class="pattern-blank">[condition]</span> will <span class="pattern-blank">[subject]</span> <span class="pattern-blank">[verb]</span>.</div>
+        <div class="pattern-example">例：Only when governments invest in public education will societies see lasting improvements in health outcomes.</div>
+      </div>
+      <div class="pattern-item">
+        <div class="pattern-label">强调句（It is … that）</div>
+        <div class="pattern-text">It is <span class="pattern-blank">[emphasis]</span>, rather than <span class="pattern-blank">[contrast]</span>, that <span class="pattern-blank">[verb phrase]</span>.</div>
+        <div class="pattern-example">例：It is a lack of awareness, rather than a lack of facilities, that lies at the heart of the public health crisis.</div>
+      </div>
+      <div class="pattern-item">
+        <div class="pattern-label">条件句（虚拟语气）</div>
+        <div class="pattern-text">If governments were to <span class="pattern-blank">[action]</span>, the long-term benefits would far outweigh the initial costs.</div>
+        <div class="pattern-example">例：If governments were to invest more heavily in health education, the long-term benefits would far outweigh the initial costs.</div>
+      </div>
+      <div class="pattern-item">
+        <div class="pattern-label">Not only … but also</div>
+        <div class="pattern-text">Not only does <span class="pattern-blank">[subject + verb]</span>, but it also <span class="pattern-blank">[second benefit]</span>.</div>
+        <div class="pattern-example">例：Not only does regular exercise improve physical health, but it also has a well-documented positive effect on mental well-being.</div>
+      </div>
+    </div>
+
+    <div class="pattern-group">
+      <div class="pattern-group-title">衔接词分类</div>
+
+      <div class="vocab-grid">
+        <div class="vocab-row">
+          <div class="vocab-cell">功能</div>
+          <div class="vocab-cell">低分用词</div>
+          <div class="vocab-cell">高分替换</div>
+        </div>
+        <div class="vocab-row">
+          <div class="vocab-cell">递进</div>
+          <div class="vocab-cell"><span class="vocab-basic">Also / And</span></div>
+          <div class="vocab-cell"><span class="vocab-advanced">Furthermore / Moreover / In addition / What is more</span></div>
+        </div>
+        <div class="vocab-row">
+          <div class="vocab-cell">转折</div>
+          <div class="vocab-cell"><span class="vocab-basic">But</span></div>
+          <div class="vocab-cell"><span class="vocab-advanced">However / Nevertheless / That said / Nonetheless</span></div>
+        </div>
+        <div class="vocab-row">
+          <div class="vocab-cell">举例</div>
+          <div class="vocab-cell"><span class="vocab-basic">For example</span></div>
+          <div class="vocab-cell"><span class="vocab-advanced">For instance / To illustrate / A case in point is</span></div>
+        </div>
+        <div class="vocab-row">
+          <div class="vocab-cell">结果</div>
+          <div class="vocab-cell"><span class="vocab-basic">So</span></div>
+          <div class="vocab-cell"><span class="vocab-advanced">Therefore / Consequently / As a result / Hence</span></div>
+        </div>
+        <div class="vocab-row">
+          <div class="vocab-cell">让步</div>
+          <div class="vocab-cell"><span class="vocab-basic">Although</span></div>
+          <div class="vocab-cell"><span class="vocab-advanced">While / Whereas / Even though / Granted that / Admittedly</span></div>
+        </div>
+        <div class="vocab-row">
+          <div class="vocab-cell">总结</div>
+          <div class="vocab-cell"><span class="vocab-basic">In conclusion</span></div>
+          <div class="vocab-cell"><span class="vocab-advanced">To conclude / On balance / All things considered / In summary</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PREPOSITIONS -->
+  <div class="kb-panel" id="kb-prepositions">
+    <div class="prep-grid">
+      <div class="prep-group">
+        <div class="prep-group-title">表示影响</div>
+        <div class="prep-item"><span>have an impact <span class="prep-correct">on</span></span><span class="prep-wrong">to / for</span></div>
+        <div class="prep-item"><span>have an effect <span class="prep-correct">on</span></span><span class="prep-wrong">to</span></div>
+        <div class="prep-item"><span>have an influence <span class="prep-correct">on</span></span><span class="prep-wrong">for</span></div>
+        <div class="prep-item"><span>contribute <span class="prep-correct">to</span></span><span class="prep-wrong">for / on</span></div>
+        <div class="prep-item"><span>lead <span class="prep-correct">to</span></span><span class="prep-wrong">for / on</span></div>
+        <div class="prep-item"><span>result <span class="prep-correct">in</span></span><span class="prep-wrong">to / on</span></div>
+        <div class="prep-item"><span>result <span class="prep-correct">from</span></span><span class="prep-wrong">of</span></div>
+      </div>
+      <div class="prep-group">
+        <div class="prep-group-title">表示态度／概念</div>
+        <div class="prep-item"><span>awareness <span class="prep-correct">of</span></span><span class="prep-wrong">on / about</span></div>
+        <div class="prep-item"><span>knowledge <span class="prep-correct">of</span></span><span class="prep-wrong">about</span></div>
+        <div class="prep-item"><span>attitude <span class="prep-correct">towards</span></span><span class="prep-wrong">to / for</span></div>
+        <div class="prep-item"><span>concern <span class="prep-correct">about</span></span><span class="prep-wrong">of / for</span></div>
+        <div class="prep-item"><span>solution <span class="prep-correct">to</span></span><span class="prep-wrong">of / for</span></div>
+        <div class="prep-item"><span>approach <span class="prep-correct">to</span></span><span class="prep-wrong">for</span></div>
+        <div class="prep-item"><span>impact <span class="prep-correct">on</span></span><span class="prep-wrong">to / of</span></div>
+      </div>
+      <div class="prep-group">
+        <div class="prep-group-title">表示"在某方面"</div>
+        <div class="prep-item"><span>in terms <span class="prep-correct">of</span></span><span class="prep-wrong">to / with</span></div>
+        <div class="prep-item"><span>with regard <span class="prep-correct">to</span></span><span class="prep-wrong">of</span></div>
+        <div class="prep-item"><span>in relation <span class="prep-correct">to</span></span><span class="prep-wrong">of</span></div>
+        <div class="prep-item"><span>responsible <span class="prep-correct">for</span></span><span class="prep-wrong">of / to</span></div>
+        <div class="prep-item"><span>capable <span class="prep-correct">of</span></span><span class="prep-wrong">to</span></div>
+        <div class="prep-item"><span>due <span class="prep-correct">to</span></span><span class="prep-wrong">of / for</span></div>
+        <div class="prep-item"><span>owing <span class="prep-correct">to</span></span><span class="prep-wrong">of</span></div>
+      </div>
+      <div class="prep-group">
+        <div class="prep-group-title">表示比较</div>
+        <div class="prep-item"><span>compared <span class="prep-correct">with / to</span></span><span class="prep-wrong">than</span></div>
+        <div class="prep-item"><span>in contrast <span class="prep-correct">to / with</span></span><span class="prep-wrong">of</span></div>
+        <div class="prep-item"><span>similar <span class="prep-correct">to</span></span><span class="prep-wrong">with / as</span></div>
+        <div class="prep-item"><span>different <span class="prep-correct">from</span></span><span class="prep-wrong">to / than</span></div>
+        <div class="prep-item"><span>superior <span class="prep-correct">to</span></span><span class="prep-wrong">than</span></div>
+        <div class="prep-item"><span>inferior <span class="prep-correct">to</span></span><span class="prep-wrong">than</span></div>
+        <div class="prep-item"><span>independent <span class="prep-correct">of</span></span><span class="prep-wrong">from</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRAMMAR -->
+  <div class="kb-panel" id="kb-grammar">
+
+    <div class="grammar-item">
+      <div class="grammar-title">主谓一致</div>
+      <div class="grammar-row">
+        <div class="grammar-cell g-label">规则</div>
+        <div class="grammar-cell g-wrong">❌ 错误示例</div>
+        <div class="grammar-cell g-right">✅ 正确写法</div>
+      </div>
+      <div class="grammar-row">
+        <div class="grammar-cell g-label">抽象名词单数</div>
+        <div class="grammar-cell g-wrong">their awareness of health are improving</div>
+        <div class="grammar-cell g-right">their awareness of health <strong>is</strong> improving</div>
+      </div>
+      <div class="grammar-row">
+        <div class="grammar-cell g-label">the number of</div>
+        <div class="grammar-cell g-wrong">the number of people are increasing</div>
+        <div class="grammar-cell g-right">the number of people <strong>is</strong> increasing</div>
+      </div>
+      <div class="grammar-row">
+        <div class="grammar-cell g-label">a number of</div>
+        <div class="grammar-cell g-wrong">a number of studies has shown</div>
+        <div class="grammar-cell g-right">a number of studies <strong>have</strong> shown</div>
+      </div>
+      <div class="grammar-row">
+        <div class="grammar-cell g-label">不可数名词</div>
+        <div class="grammar-cell g-wrong">information are available</div>
+        <div class="grammar-cell g-right">information <strong>is</strong> available</div>
+      </div>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-title">倒装句结构</div>
+      <div class="grammar-row">
+        <div class="grammar-cell g-label">触发词</div>
+        <div class="grammar-cell g-wrong">❌ 错误示例</div>
+        <div class="grammar-cell g-right">✅ 正确写法</div>
+      </div>
+      <div class="grammar-row">
+        <div class="grammar-cell g-label">Only when</div>
+        <div class="grammar-cell g-wrong">Only when people learn that they will act</div>
+        <div class="grammar-cell g-right">Only when people learn <strong>will they</strong> act</div>
+      </div>
+      <div class="grammar-row">
+        <div class="grammar-cell g-label">Not only</div>
+        <div class="grammar-cell g-wrong">Not only exercise improves health</div>
+        <div class="grammar-cell g-right">Not only <strong>does</strong> exercise improve health</div>
+      </div>
+      <div class="grammar-row">
+        <div class="grammar-cell g-label">Never</div>
+        <div class="grammar-cell g-wrong">Never this issue has been more pressing</div>
+        <div class="grammar-cell g-right">Never <strong>has</strong> this issue been more pressing</div>
+      </div>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-title">高频拼写错误</div>
+      <div class="grammar-row">
+        <div class="grammar-cell g-label">单词</div>
+        <div class="grammar-cell g-wrong">❌ 常见错误</div>
+        <div class="grammar-cell g-right">✅ 正确拼写</div>
+      </div>
+      <div class="grammar-row">
+        <div class="grammar-cell g-label">government</div>
+        <div class="grammar-cell g-wrong">goverment / govenment</div>
+        <div class="grammar-cell g-right"><strong>government</strong></div>
+      </div>
+      <div class="grammar-row">
+        <div class="grammar-cell g-label">environment</div>
+        <div class="grammar-cell g-wrong">enviroment / enviornment</div>
+        <div class="grammar-cell g-right"><strong>environment</strong></div>
+      </div>
+      <div class="grammar-row">
+        <div class="grammar-cell g-label">necessary</div>
+        <div class="grammar-cell g-wrong">neccessary / necesary</div>
+        <div class="grammar-cell g-right"><strong>necessary</strong></div>
+      </div>
+      <div class="grammar-row">
+        <div class="grammar-cell g-label">definitely</div>
+        <div class="grammar-cell g-wrong">definately / definetly</div>
+        <div class="grammar-cell g-right"><strong>definitely</strong></div>
+      </div>
+      <div class="grammar-row">
+        <div class="grammar-cell g-label">separate</div>
+        <div class="grammar-cell g-wrong">seperate</div>
+        <div class="grammar-cell g-right"><strong>separate</strong></div>
+      </div>
+      <div class="grammar-row">
+        <div class="grammar-cell g-label">achieve</div>
+        <div class="grammar-cell g-wrong">acheive</div>
+        <div class="grammar-cell g-right"><strong>achieve</strong></div>
+      </div>
+      <div class="grammar-row">
+        <div class="grammar-cell g-label">fertiliser</div>
+        <div class="grammar-cell g-wrong">fertilizer（美式）</div>
+        <div class="grammar-cell g-right"><strong>fertiliser</strong>（英式，雅思用）</div>
+      </div>
+      <div class="grammar-row">
+        <div class="grammar-cell g-label">nutrient</div>
+        <div class="grammar-cell g-wrong">nutritions / nutriant</div>
+        <div class="grammar-cell g-right"><strong>nutrients</strong>（复数）</div>
+      </div>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-title">时态使用规则</div>
+      <div class="grammar-row">
+        <div class="grammar-cell g-label">场景</div>
+        <div class="grammar-cell g-wrong">错误做法</div>
+        <div class="grammar-cell g-right">正确做法</div>
+      </div>
+      <div class="grammar-row">
+        <div class="grammar-cell g-label">学术写作主体</div>
+        <div class="grammar-cell g-wrong">混用现在时和过去时</div>
+        <div class="grammar-cell g-right">以<strong>一般现在时</strong>为主</div>
+      </div>
+      <div class="grammar-row">
+        <div class="grammar-cell g-label">引用研究</div>
+        <div class="grammar-cell g-wrong">A study showed that… (单独用过去时)</div>
+        <div class="grammar-cell g-right">Studies <strong>have shown</strong> that… (现在完成时)</div>
+      </div>
+      <div class="grammar-row">
+        <div class="grammar-cell g-label">历史事件</div>
+        <div class="grammar-cell g-wrong">In 2010, the policy is introduced</div>
+        <div class="grammar-cell g-right">In 2010, the policy <strong>was introduced</strong></div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- SCREEN 3: 阶段计划                         -->
+<!-- ══════════════════════════════════════════ -->
+<div class="screen" id="screen-phases">
+<div class="main">
+
+  <div class="page-header">
+    <div class="page-title">20天阶段计划</div>
+    <div class="page-sub">每个阶段有明确目标和对应知识点 · 点击阶段查看详细任务 · 结合知识库配合使用</div>
+  </div>
+
+  <div class="phase-grid">
+
+    <!-- Phase 1 -->
+    <div class="phase-card">
+      <div class="phase-header" onclick="togglePhase(this)">
+        <div class="phase-num">01</div>
+        <div class="phase-info">
+          <div class="phase-name">打基础 — 框架建立</div>
+          <div class="phase-days">Day 1–7 · 第一周</div>
+        </div>
+        <div class="phase-tags">
+          <span class="ptag ptag-w">写作框架</span>
+          <span class="ptag ptag-g">PEE结构</span>
+          <span class="ptag ptag-r">词汇输入</span>
+        </div>
+        <div class="phase-chevron">›</div>
+      </div>
+      <div class="phase-body">
+        <div class="day-task-list">
+          <div class="day-task">
+            <div class="task-time">每天</div>
+            <div class="task-content">
+              <div class="task-name">精读范文 · 拆解结构</div>
+              <div class="task-desc">每天精读一篇Task 2范文，分析四段式结构，标出所有衔接词和高级词汇，抄写Introduction和Conclusion的框架句型。</div>
+            </div>
+          </div>
+          <div class="day-task">
+            <div class="task-time">奇数天</div>
+            <div class="task-content">
+              <div class="task-name">Task 2 仿写练习（不限时）</div>
+              <div class="task-desc">用四段式框架写一篇完整Task 2，重点是结构正确，哪怕词汇简单也无妨。写完对照框架自查每段是否有topic sentence、解释、例子。</div>
+            </div>
+          </div>
+          <div class="day-task">
+            <div class="task-time">偶数天</div>
+            <div class="task-content">
+              <div class="task-name">语法专项 + 词汇积累</div>
+              <div class="task-desc">专攻三个高频错误：主谓一致、介词搭配（awareness of）、Only when倒装句。每个语法点写10个练习句。同时积累10个高频替换词汇。</div>
+            </div>
+          </div>
+        </div>
+        <div class="kb-link-title">本阶段对应知识库</div>
+        <div class="kb-links">
+          <div class="kb-link-item" onclick="goToKb('vocab')"><span class="kb-link-icon">📖</span> 词汇替换表 — 基础词升级</div>
+          <div class="kb-link-item" onclick="goToKb('patterns')"><span class="kb-link-icon">✍️</span> Introduction和Body句型</div>
+          <div class="kb-link-item" onclick="goToKb('grammar')"><span class="kb-link-icon">⚙️</span> 主谓一致 + 倒装句结构</div>
+        </div>
+        <div class="goal-box">
+          <strong>第一周目标：</strong>能写出结构完整的Task 2（四段俱全），Introduction有清晰立场，每个Body段有PEE三步，语法主谓一致错误明显减少。
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="phase-card">
+      <div class="phase-header" onclick="togglePhase(this)">
+        <div class="phase-num">02</div>
+        <div class="phase-info">
+          <div class="phase-name">提速 — 词汇升级 + 句式多样</div>
+          <div class="phase-days">Day 8–14 · 第二周</div>
+        </div>
+        <div class="phase-tags">
+          <span class="ptag ptag-w">词汇多样</span>
+          <span class="ptag ptag-b">复杂句型</span>
+          <span class="ptag ptag-g">限时写作</span>
+        </div>
+        <div class="phase-chevron">›</div>
+      </div>
+      <div class="phase-body">
+        <div class="day-task-list">
+          <div class="day-task">
+            <div class="task-time">每天</div>
+            <div class="task-content">
+              <div class="task-name">限时Task 2（40分钟）</div>
+              <div class="task-desc">开始严格计时写作，不查字典，不修改超过5分钟。每次写完设定一个本篇专项目标：本篇不用任何基础词 / 本篇必须包含倒装句 / 本篇PEE每段三步完整。</div>
+            </div>
+          </div>
+          <div class="day-task">
+            <div class="task-time">每天</div>
+            <div class="task-content">
+              <div class="task-name">词汇升级训练</div>
+              <div class="task-desc">取上一篇essay，把所有基础词替换为高级词汇。目标：全文0个 important / good / bad / show / change 出现。同时检查衔接词是否多样（不能连续两段用同一个词）。</div>
+            </div>
+          </div>
+          <div class="day-task">
+            <div class="task-time">隔天</div>
+            <div class="task-content">
+              <div class="task-name">Task 1 图表描述练习</div>
+              <div class="task-desc">20分钟限时写一篇Task 1，重点练数据比较表达：a sharp rise / a gradual decline / peak at / account for 30%。必须包含Overview段落总结整体趋势。</div>
+            </div>
+          </div>
+        </div>
+        <div class="kb-link-title">本阶段对应知识库</div>
+        <div class="kb-links">
+          <div class="kb-link-item" onclick="goToKb('vocab')"><span class="kb-link-icon">📖</span> 话题专项词汇 — 健康/教育/科技</div>
+          <div class="kb-link-item" onclick="goToKb('patterns')"><span class="kb-link-icon">✍️</span> 高分复杂句型 + 衔接词分类</div>
+          <div class="kb-link-item" onclick="goToKb('prepositions')"><span class="kb-link-icon">🔗</span> 介词搭配全表</div>
+        </div>
+        <div class="goal-box">
+          <strong>第二周目标：</strong>写作词汇多样性提升（essay中基础词占比下降），至少有一个倒装句或强调句，Task 1能在20分钟内写完150词并包含Overview。
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="phase-card">
+      <div class="phase-header" onclick="togglePhase(this)">
+        <div class="phase-num">03</div>
+        <div class="phase-info">
+          <div class="phase-name">强化 — 准确率 + 语法精修</div>
+          <div class="phase-days">Day 15–18 · 第三周前段</div>
+        </div>
+        <div class="phase-tags">
+          <span class="ptag ptag-w">语法精准</span>
+          <span class="ptag ptag-g">自评能力</span>
+          <span class="ptag ptag-r">Task1+2连写</span>
+        </div>
+        <div class="phase-chevron">›</div>
+      </div>
+      <div class="phase-body">
+        <div class="day-task-list">
+          <div class="day-task">
+            <div class="task-time">每天</div>
+            <div class="task-content">
+              <div class="task-name">Task 1 + Task 2 连续写作（60分钟）</div>
+              <div class="task-desc">模拟真实考试节奏：先写Task 1（20分钟），再写Task 2（40分钟）。重点训练在连续写作状态下保持质量，避免Task 2因疲劳而结构散乱。</div>
+            </div>
+          </div>
+          <div class="day-task">
+            <div class="task-time">每天</div>
+            <div class="task-content">
+              <div class="task-name">四维度自评（TR/CC/LR/GRA）</div>
+              <div class="task-desc">写完后按官方四维度逐项评分，每项找出1个具体改进点（不能只写"需改进"，要写"第X句哪里改成什么"）。建立错题本记录高频错误。</div>
+            </div>
+          </div>
+          <div class="day-task">
+            <div class="task-time">每天</div>
+            <div class="task-content">
+              <div class="task-name">语法错误集中修复</div>
+              <div class="task-desc">整理错题本中最频繁出现的语法错误，针对每种错误写5个正确例句，直到不再犯同类错误为止。</div>
+            </div>
+          </div>
+        </div>
+        <div class="kb-link-title">本阶段对应知识库</div>
+        <div class="kb-links">
+          <div class="kb-link-item" onclick="goToKb('grammar')"><span class="kb-link-icon">⚙️</span> 语法要点 — 时态、拼写全表</div>
+          <div class="kb-link-item" onclick="goToKb('patterns')"><span class="kb-link-icon">✍️</span> Conclusion句型 + 让步句</div>
+          <div class="kb-link-item" onclick="goToKb('prepositions')"><span class="kb-link-icon">🔗</span> 复习全部介词搭配</div>
+        </div>
+        <div class="goal-box">
+          <strong>本阶段目标：</strong>每篇Task 2语法错误少于4处，Task 1能准确描述数据趋势并有清晰Overview，四维度自评能找到具体改进点而非泛泛而谈。
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 4 -->
+    <div class="phase-card">
+      <div class="phase-header" onclick="togglePhase(this)">
+        <div class="phase-num">04</div>
+        <div class="phase-info">
+          <div class="phase-name">冲刺 — 模拟实战 + 内化框架</div>
+          <div class="phase-days">Day 19–20 · 考前两天</div>
+        </div>
+        <div class="phase-tags">
+          <span class="ptag ptag-w">全真模拟</span>
+          <span class="ptag ptag-r">轻松复习</span>
+          <span class="ptag ptag-b">心态调整</span>
+        </div>
+        <div class="phase-chevron">›</div>
+      </div>
+      <div class="phase-body">
+        <div class="day-task-list">
+          <div class="day-task">
+            <div class="task-time">Day 19</div>
+            <div class="task-content">
+              <div class="task-name">最后一套全真写作模拟</div>
+              <div class="task-desc">完整模拟Task 1+2，严格计时60分钟，考场条件（不查字典、不参考任何资料）。写完后轻度检查明显语法错误即可，不要大幅修改，建立信心。</div>
+            </div>
+          </div>
+          <div class="day-task">
+            <div class="task-time">Day 19</div>
+            <div class="task-content">
+              <div class="task-name">框架句型默写</div>
+              <div class="task-desc">把Introduction和Conclusion的框架句型默写一遍，确保考场上自动化输出。同时回顾本月积累的10个最高频词汇替换，确保能灵活调用。</div>
+            </div>
+          </div>
+          <div class="day-task">
+            <div class="task-time">Day 20</div>
+            <div class="task-content">
+              <div class="task-name">考试当天策略</div>
+              <div class="task-desc">Task 1用20分钟写完即转Task 2，不要超时。Task 2第一段先改写题目+表明立场，不要照抄原题任何词组。写完后留5分钟检查拼写和明显语法错误。</div>
+            </div>
+          </div>
+        </div>
+        <div class="kb-link-title">考前快速复习</div>
+        <div class="kb-links">
+          <div class="kb-link-item" onclick="goToKb('patterns')"><span class="kb-link-icon">✍️</span> Introduction + Conclusion 框架句</div>
+          <div class="kb-link-item" onclick="goToKb('vocab')"><span class="kb-link-icon">📖</span> 词汇替换 — 快速过一遍</div>
+          <div class="kb-link-item" onclick="goToKb('grammar')"><span class="kb-link-icon">⚙️</span> 拼写错误表 — 最后确认</div>
+        </div>
+        <div class="goal-box">
+          <strong>冲刺目标：</strong>框架已内化，不需要思考结构只需专注内容。词汇替换自动化，不会在考场上搜索词汇。相信自己20天的积累，放松发挥。
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- Notification -->
+<div class="notif" id="notif"></div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- MODAL: 范文 & 题目                         -->
+<!-- ══════════════════════════════════════════ -->
+<style>
+.modal-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(28,25,23,.6);
+  z-index: 500;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem 1rem;
+  overflow-y: auto;
+  backdrop-filter: blur(2px);
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 760px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
+  overflow: hidden;
+  animation: modalIn .2s ease;
+}
+@keyframes modalIn { from { opacity:0; transform:translateY(-16px); } to { opacity:1; transform:translateY(0); } }
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: var(--ink);
+  color: white;
+}
+.modal-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; }
+.modal-meta { font-size: 11px; color: #aaa; margin-top: 2px; }
+.modal-close {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 1px solid #444;
+  background: none;
+  color: #aaa;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .15s;
+  flex-shrink: 0;
+}
+.modal-close:hover { background: #333; color: white; }
+.modal-tabs {
+  display: flex;
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+}
+.modal-tab {
+  flex: 1;
+  padding: .65rem;
+  border: none;
+  background: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all .15s;
+  text-align: center;
+}
+.modal-tab.active { color: var(--accent); border-bottom-color: var(--accent); background: white; }
+.modal-body { padding: 1.5rem; max-height: 70vh; overflow-y: auto; }
+/* Essay display */
+.essay-question {
+  background: var(--info-light);
+  border: 1px solid #c5d5eb;
+  border-left: 4px solid var(--info);
+  border-radius: 4px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--info);
+}
+.essay-question strong { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; margin-bottom: .4rem; color: var(--muted); }
+.essay-band {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: var(--gold-light);
+  border: 1px solid #d4a853;
+  border-radius: 4px;
+  padding: .4rem .875rem;
+  font-size: 12px;
+  color: var(--gold);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+.essay-text {
+  font-size: 13.5px;
+  line-height: 1.9;
+  color: var(--ink);
+  white-space: pre-wrap;
+}
+.essay-text .para { margin-bottom: 1rem; }
+.analysis-section { margin-top: 1.5rem; border-top: 1px solid var(--border); padding-top: 1.25rem; }
+.analysis-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--muted);
+  margin-bottom: .875rem;
+}
+.analysis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+.analysis-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: .75rem;
+}
+.analysis-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--accent);
+  margin-bottom: .35rem;
+}
+.analysis-content { font-size: 12px; color: var(--ink); line-height: 1.6; }
+/* Prompt display */
+.prompt-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all .15s;
+}
+.prompt-card:hover { border-color: var(--accent); }
+.prompt-card.selected { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light); }
+.prompt-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .6rem 1rem;
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+}
+.prompt-num { font-size: 11px; font-weight: 600; color: var(--muted); }
+.prompt-type { font-size: 11px; color: var(--accent); font-weight: 500; }
+.prompt-text {
+  padding: 1rem;
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: var(--ink);
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+}
+.prompt-instruction {
+  padding: .5rem 1rem .75rem;
+  font-size: 11.5px;
+  color: var(--muted);
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+}
+.prompt-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border);
+  background: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.prompt-tip { font-size: 12px; color: var(--muted); }
+</style>
+
+<!-- Modal container -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title" id="modal-title">高分范文</div>
+        <div class="modal-meta" id="modal-meta"></div>
+      </div>
+      <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    </div>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<script>
+// ── ESSAYS DATA ──
+const ESSAYS = {
+  task2: {
+    title: 'Task 2 高分范文',
+    meta: 'Discuss both views · 估分 7.5–8.0',
+    question: 'Some people think that the best way to improve public health is to increase the number of sports facilities. Others, however, believe that this would have little effect and that other measures are more important.\n\nDiscuss both views and give your own opinion.',
+    band: '估分 7.5–8.0',
+    essay: [
+      'The question of how best to improve public health has long been a subject of considerable debate. While some argue that expanding sports infrastructure is the most effective approach, others contend that alternative measures, such as public education and policy reform, would yield far greater benefits. In my view, although sports facilities play a valuable role, raising health awareness among the general public should take precedence.',
+      'Proponents of building more sports facilities argue that increased access to exercise spaces can directly encourage physical activity among the general population. When gymnasiums, swimming pools, and public parks are readily available within communities, individuals are more likely to incorporate regular exercise into their daily routines, thereby reducing the risk of chronic diseases such as obesity and type 2 diabetes. For instance, in countries such as Finland, where the government has invested heavily in public sports infrastructure, obesity rates have consistently remained among the lowest in Europe.',
+      'However, a compelling argument can be made that sports facilities alone are insufficient to drive meaningful improvements in public health. Even when such facilities exist, many individuals fail to use them due to a lack of awareness about the importance of physical activity, or because deeply ingrained unhealthy habits — such as sedentary lifestyles and poor dietary choices — have not been addressed. It is therefore argued that governments should prioritise public health campaigns, nutritional education, and policies that restrict the marketing of unhealthy food products. Only when people develop a genuine understanding of health risks will they be motivated to make lasting behavioural changes.',
+      'In conclusion, while increasing the number of sports facilities can contribute to better public health outcomes, it is ultimately a multifaceted approach — combining accessible infrastructure with widespread health education — that holds the greatest promise. Governments would be well advised to treat these strategies as complementary rather than mutually exclusive.',
+    ],
+    analysis: [
+      { label: 'Task Response (TR)', content: '清晰讨论两方观点，立场鲜明，结论重申立场且有新信息补充（complementary rather than exclusive）。' },
+      { label: 'Coherence & Cohesion (CC)', content: '四段式结构完整，衔接词多样（While / However / Therefore / It is therefore / In conclusion），段落间逻辑清晰。' },
+      { label: 'Lexical Resource (LR)', content: '高频替换词：infrastructure / contend / yield / ingrained / sedentary / prioritise / multifaceted。无重复基础词。' },
+      { label: 'Grammar Range (GRA)', content: '含倒装句（Only when…will they）、强调句结构、复杂从句。句式多样，无明显语法错误。' },
+    ]
+  },
+  task1: {
+    title: 'Task 1 高分范文',
+    meta: '线图描述 · 估分 7.5',
+    question: 'The graph below shows the percentage of households in the UK that had access to the internet between 1998 and 2012.\n\nSummarise the information by selecting and reporting the main features, and make comparisons where relevant.',
+    band: '估分 7.5',
+    essay: [
+      'The line graph illustrates the proportion of UK households with internet access over a fourteen-year period from 1998 to 2012.',
+      'Overall, there was a dramatic and sustained increase in internet access throughout the period. While the figure stood at a modest level in 1998, it rose sharply to reach approximately 80% by 2012, with growth being particularly rapid during the early 2000s.',
+      'In 1998, only around 9% of UK households had access to the internet. This figure began to climb steadily, reaching approximately 25% by 2000. The following years saw the most significant acceleration in growth, with the percentage nearly doubling to around 50% by 2004. This upward momentum continued, albeit at a somewhat slower pace, with access rising to roughly 60% in 2006.',
+      'From 2006 onwards, growth remained consistent. The proportion of connected households increased to approximately 70% in 2009 before climbing further to reach just over 80% by the end of the period in 2012. Notably, despite the overall upward trend, the rate of increase appeared to gradually slow during the latter years of the period, suggesting a possible approach towards market saturation.',
+    ],
+    analysis: [
+      { label: 'Task Achievement (TA)', content: '包含Overview段（第二段），总结整体趋势（dramatic increase）；选取关键数据点进行对比描述，未遗漏主要特征。' },
+      { label: 'Coherence & Cohesion (CC)', content: '按时间顺序组织段落，衔接词自然：While / The following years / From 2006 onwards / Notably。' },
+      { label: 'Lexical Resource (LR)', content: '数据描述词汇多样：dramatic / sustained / modest / sharp / accelerate / momentum / saturation。无重复表达。' },
+      { label: 'Grammar Range (GRA)', content: '正确使用过去时（historical data），含分词短语（suggesting a possible approach），句式有变化。' },
+    ]
+  }
+};
+
+// ── PROMPTS DATA ──
+const PROMPTS = {
+  task2: [
+    {
+      type: 'Discuss both views',
+      text: 'Some people believe that children should be taught to be competitive at school. Others, however, feel that cooperation is more important. Discuss both views and give your own opinion.',
+      instruction: 'Write at least 250 words. Give your opinion clearly in the introduction and conclusion.'
+    },
+    {
+      type: 'Opinion Essay',
+      text: 'In many countries, governments are spending large amounts of money on space exploration. Some people argue that this money should be spent on solving problems on Earth instead. To what extent do you agree or disagree?',
+      instruction: 'Write at least 250 words. Take a clear position — do not sit on the fence.'
+    },
+    {
+      type: 'Advantages & Disadvantages',
+      text: 'Many people are choosing to live and work in cities rather than in rural areas. What are the advantages and disadvantages of this trend?',
+      instruction: 'Write at least 250 words. Discuss both sides objectively. You may give your opinion in the conclusion.'
+    },
+    {
+      type: 'Problem & Solution',
+      text: 'In many countries, the gap between rich and poor is growing. What problems does this cause, and what measures could be taken to address this issue?',
+      instruction: 'Write at least 250 words. Clearly identify causes and propose realistic solutions.'
+    },
+    {
+      type: 'Discuss both views',
+      text: 'Some people think that governments should provide financial support to creative artists such as painters and musicians. Others think that artists should seek funding from other sources. Discuss both views and give your own opinion.',
+      instruction: 'Write at least 250 words. Cover both sides in separate body paragraphs.'
+    },
+    {
+      type: 'Opinion Essay',
+      text: 'Some people believe that the most effective way to reduce crime is to give longer prison sentences. Others, however, argue that there are better ways to achieve this goal. To what extent do you agree or disagree?',
+      instruction: 'Write at least 250 words. Use specific examples to support your arguments.'
+    },
+  ],
+  task1: [
+    {
+      type: 'Line Graph',
+      text: 'The graph below shows the average number of hours per day that people in four different countries spent watching television in 2010 and 2020. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.',
+      instruction: 'Write at least 150 words. Include an Overview paragraph summarising the main trend. Do NOT give your opinion.'
+    },
+    {
+      type: 'Bar Chart',
+      text: 'The bar chart below shows the percentage of men and women in different age groups who used public transport in a city in 2018. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.',
+      instruction: 'Write at least 150 words. Compare men vs women and different age groups. Start with an Overview.'
+    },
+    {
+      type: 'Pie Chart',
+      text: 'The pie charts below show the proportion of energy generated from different sources in a country in 1995 and 2015. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.',
+      instruction: 'Write at least 150 words. Highlight the most significant changes between the two years.'
+    },
+    {
+      type: 'Table',
+      text: 'The table below shows the number of students enrolled in different university courses in three countries in 2019. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.',
+      instruction: 'Write at least 150 words. Select the most notable figures — do not describe every number.'
+    },
+  ]
+};
+
+// ── MODAL FUNCTIONS ──
+let selectedPromptIdx = -1;
+let currentPromptType = '';
+
+function openEssay(type) {
+  const data = ESSAYS[type];
+  const modal = document.getElementById('modal-box');
+  document.getElementById('modal-title').textContent = data.title;
+  document.getElementById('modal-meta').textContent = data.meta;
+
+  const analysisHTML = data.analysis.map(a =>
+    `<div class="analysis-item"><div class="analysis-label">${a.label}</div><div class="analysis-content">${a.content}</div></div>`
+  ).join('');
+
+  const paragraphs = data.essay.map(p => `<div class="para">${p}</div>`).join('');
+
+  document.getElementById('modal-content').innerHTML = `
+    <div class="modal-body">
+      <div class="essay-question"><strong>题目</strong>${data.question.replace(/\n/g,'<br>')}</div>
+      <div class="essay-band">⭐ ${data.band}</div>
+      <div class="essay-text">${paragraphs}</div>
+      <div class="analysis-section">
+        <div class="analysis-title">📊 范文解析 — 四维度分析</div>
+        <div class="analysis-grid">${analysisHTML}</div>
+      </div>
+    </div>
+  `;
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+function openPrompt(type) {
+  currentPromptType = type;
+  selectedPromptIdx = -1;
+  const prompts = PROMPTS[type];
+  const label = type === 'task2' ? 'Task 2 写作题目' : 'Task 1 写作题目';
+  const timeStr = type === 'task2' ? '建议用时 40 分钟' : '建议用时 20 分钟';
+  document.getElementById('modal-title').textContent = label;
+  document.getElementById('modal-meta').textContent = timeStr + ' · 选一道题目开始限时写作';
+
+  const promptCards = prompts.map((p, i) => `
+    <div class="prompt-card" id="pcard-${i}" onclick="selectPrompt(${i})">
+      <div class="prompt-card-header">
+        <span class="prompt-num">题目 ${i+1}</span>
+        <span class="prompt-type">${p.type}</span>
+      </div>
+      <div class="prompt-text">${p.text}</div>
+      <div class="prompt-instruction">${p.instruction}</div>
+    </div>
+  `).join('');
+
+  document.getElementById('modal-content').innerHTML = `
+    <div class="modal-body">
+      ${promptCards}
+    </div>
+    <div class="prompt-footer">
+      <div class="prompt-tip">💡 选定题目后关闭弹窗，点击计时器开始计时</div>
+      <button class="btn btn-accent btn-sm" onclick="confirmPrompt()">✓ 选好了，开始计时</button>
+    </div>
+  `;
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+function selectPrompt(idx) {
+  selectedPromptIdx = idx;
+  document.querySelectorAll('.prompt-card').forEach((c, i) => {
+    c.classList.toggle('selected', i === idx);
+  });
+}
+
+function confirmPrompt() {
+  if (selectedPromptIdx < 0) { alert('请先选择一道题目'); return; }
+  const p = PROMPTS[currentPromptType][selectedPromptIdx];
+  closeModalDirect();
+  startSession(1);
+  showNotif('题目已选定，计时器已准备好，点击开始！');
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModalDirect();
+}
+function closeModalDirect() {
+  document.getElementById('modal-overlay').classList.remove('open');
+}
+</script>
+
+<script>
+// ── STATE ──
+const STATE_KEY = 'ielts_state_v2';
+let state = {
+  sessions: [false, false, false],
+  completedDays: [],
+  currentDay: 1,
+  currentSession: -1,
+  essaysWritten: 0,
+  streak: 0,
+  lastCompleted: null
+};
+
+function loadState() {
+  try {
+    const s = localStorage.getItem(STATE_KEY);
+    if (s) state = { ...state, ...JSON.parse(s) };
+  } catch(e) {}
+}
+function saveState() {
+  try { localStorage.setItem(STATE_KEY, JSON.stringify(state)); } catch(e) {}
+}
+
+// ── TIMER ──
+let timerInterval = null;
+let timerSeconds = 0;
+let timerTarget = 0;
+let timerRunning = false;
+const SESSION_DURATIONS = [20 * 60, 40 * 60, 20 * 60];
+const SESSION_NAMES = ['精读范文', '限时写作', '自评复盘'];
+
+function startSession(idx) {
+  if (state.sessions[idx]) return;
+  state.currentSession = idx;
+  timerTarget = SESSION_DURATIONS[idx];
+  timerSeconds = 0;
+  timerRunning = false;
+  clearInterval(timerInterval);
+  updateTimerDisplay();
+  document.getElementById('timer-label').textContent = SESSION_NAMES[idx];
+  document.getElementById('timer-session-name').textContent = '点击开始计时';
+  document.getElementById('start-btn').textContent = '▶ 开始';
+  // highlight active block
+  document.querySelectorAll('.session-block').forEach((b, i) => {
+    b.classList.toggle('active-session', i === idx && !state.sessions[idx]);
+  });
+  updateMiniDots();
+}
+
+function toggleTimer() {
+  if (state.currentSession < 0) { showNotif('请先选择一个环节'); return; }
+  if (timerRunning) {
+    clearInterval(timerInterval);
+    timerRunning = false;
+    document.getElementById('start-btn').textContent = '▶ 继续';
+  } else {
+    timerRunning = true;
+    document.getElementById('start-btn').textContent = '⏸ 暂停';
+    document.getElementById('timer-session-name').textContent = SESSION_NAMES[state.currentSession];
+    timerInterval = setInterval(() => {
+      timerSeconds++;
+      updateTimerDisplay();
+      if (timerSeconds >= timerTarget) {
+        clearInterval(timerInterval);
+        timerRunning = false;
+        completeSession(state.currentSession);
+      }
+    }, 1000);
+  }
+}
+
+function resetTimer() {
+  clearInterval(timerInterval);
+  timerRunning = false;
+  timerSeconds = 0;
+  updateTimerDisplay();
+  document.getElementById('start-btn').textContent = '▶ 开始';
+}
+
+function updateTimerDisplay() {
+  const remaining = Math.max(0, timerTarget - timerSeconds);
+  const m = Math.floor(remaining / 60).toString().padStart(2, '0');
+  const s = (remaining % 60).toString().padStart(2, '0');
+  const el = document.getElementById('timer-display');
+  el.textContent = m + ':' + s;
+  el.classList.toggle('warn', remaining < 120 && remaining > 0);
+}
+
+function completeSession(idx) {
+  state.sessions[idx] = true;
+  if (idx === 1) {
+    state.essaysWritten++;
+    document.getElementById('essays-tag').style.display = 'inline-flex';
+    setTimeout(() => document.getElementById('essays-tag').style.display = 'none', 3000);
+  }
+  document.getElementById('block-' + idx).classList.add('completed');
+  document.getElementById('block-' + idx).classList.remove('active-session');
+  document.getElementById('snum-' + idx).textContent = '';
+  saveState();
+  updateUI();
+  showNotif('✓ ' + SESSION_NAMES[idx] + ' 已完成！');
+  if (state.sessions.every(Boolean)) {
+    setTimeout(() => showNotif('🎉 今日三个环节全部完成！'), 1200);
+  }
+}
+
+function updateMiniDots() {
+  [0, 1, 2].forEach(i => {
+    const dot = document.getElementById('mdot-' + i);
+    dot.className = 'mini-dot' + (state.sessions[i] ? ' done' : (state.currentSession === i ? ' current' : ''));
+  });
+}
+
+// ── DAY COMPLETE ──
+function completeDay() {
+  const today = getTodayStr();
+  if (state.completedDays.includes(today)) { showNotif('今天已经打卡了！'); return; }
+  state.completedDays.push(today);
+  state.currentDay = Math.min(20, state.completedDays.length + 1);
+  // streak
+  const yesterday = getYesterdayStr();
+  if (state.lastCompleted === yesterday || state.completedDays.length === 1) {
+    state.streak++;
+  } else if (state.lastCompleted !== today) {
+    state.streak = 1;
+  }
+  state.lastCompleted = today;
+  state.sessions = [false, false, false];
+  saveState();
+  updateUI();
+  showNotif('🔥 Day ' + state.completedDays.length + ' 打卡成功！连续 ' + state.streak + ' 天');
+}
+
+function resetToday() {
+  state.sessions = [false, false, false];
+  state.currentSession = -1;
+  timerSeconds = 0;
+  timerRunning = false;
+  clearInterval(timerInterval);
+  [0,1,2].forEach(i => {
+    document.getElementById('block-' + i).classList.remove('completed', 'active-session');
+    document.getElementById('snum-' + i).textContent = i + 1;
+  });
+  saveState();
+  updateUI();
+  showNotif('今日进度已重置');
+}
+
+// ── UI UPDATE ──
+function updateUI() {
+  // Stats
+  document.getElementById('days-done').textContent = state.completedDays.length;
+  document.getElementById('sessions-today').textContent = state.sessions.filter(Boolean).length + '/3';
+  document.getElementById('essays-written').textContent = state.essaysWritten;
+  document.getElementById('streak-count').textContent = state.streak;
+  document.getElementById('cal-progress').textContent = 'Day ' + Math.min(20, state.completedDays.length + 1);
+
+  // Progress ring
+  const pct = Math.round((state.sessions.filter(Boolean).length / 3) * 100);
+  const circumference = 94.25;
+  const offset = circumference - (pct / 100) * circumference;
+  document.getElementById('ring-fill').style.strokeDashoffset = offset;
+  document.getElementById('ring-pct').textContent = pct + '%';
+
+  // Calendar
+  const strip = document.getElementById('calendar-strip');
+  strip.innerHTML = '';
+  const today = getTodayStr();
+  for (let d = 1; d <= 20; d++) {
+    const el = document.createElement('div');
+    el.className = 'cal-day';
+    el.textContent = d;
+    const isCompleted = d <= state.completedDays.length;
+    const isToday = d === Math.min(20, state.completedDays.length + 1);
+    if (isCompleted) el.classList.add('done');
+    if (isToday) el.classList.add('today');
+    strip.appendChild(el);
+  }
+
+  // Session blocks
+  [0,1,2].forEach(i => {
+    const block = document.getElementById('block-' + i);
+    const snum = document.getElementById('snum-' + i);
+    if (state.sessions[i]) {
+      block.classList.add('completed');
+      snum.textContent = '';
+    } else {
+      block.classList.remove('completed');
+      snum.textContent = i + 1;
+    }
+  });
+
+  // Daily tip
+  updateDailyTip();
+  updateMiniDots();
+}
+
+// ── DAILY TIPS ──
+const TIPS = [
+  { tag: '框架建立', text: '今天精读范文时，重点分析Introduction的三句话结构：背景句→两方观点句→立场句。把这三句话的框架抄下来，用自己的话重新填写。' },
+  { tag: 'PEE结构', text: 'PEE = Point（观点）→ Explanation（解释原因）→ Example（举例）。今天写Body段时，每段写完检查：这三步是否都有？例子是否具体支撑了观点？' },
+  { tag: '词汇升级', text: '今天写完essay后，把所有 important / good / bad 标出来替换掉。important → crucial / vital；good → beneficial；bad → detrimental。' },
+  { tag: '介词专项', text: '今天特别注意这三个：awareness OF health（不是on）/ impact ON society（不是to）/ solution TO the problem（不是of）。' },
+  { tag: '倒装句', text: '今天在essay里加一句倒装句：Only when governments invest in education will societies see lasting change. 记住触发词Only when之后主句要倒装。' },
+  { tag: '衔接词', text: '今天检查自己的衔接词是否多样：两个Body段不能用同样的开头词。Firstly → One compelling argument / Furthermore / In contrast等交替使用。' },
+  { tag: 'Task 1', text: 'Task 1必须有Overview段落，总结1–2个最显著的整体趋势，不写具体数据。Overall, it is clear that… 这句话放在第二段或最后一段都可以。' },
+];
+
+function updateDailyTip() {
+  const tip = TIPS[state.completedDays.length % TIPS.length];
+  document.getElementById('daily-tip').textContent = tip.text;
+  document.getElementById('tip-tag').textContent = tip.tag;
+}
+
+// ── SCREENS ──
+function showScreen(name) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('screen-' + name).classList.add('active');
+  document.getElementById('nav-' + name).classList.add('active');
+}
+
+// ── KNOWLEDGE BASE ──
+function showKb(panel) {
+  document.querySelectorAll('.kb-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.kb-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('kb-' + panel).classList.add('active');
+  document.querySelectorAll('.kb-tab').forEach((t, i) => {
+    if (['vocab','patterns','prepositions','grammar'][i] === panel) t.classList.add('active');
+  });
+}
+
+function goToKb(panel) {
+  showScreen('knowledge');
+  showKb(panel);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── PHASE TOGGLE ──
+function togglePhase(header) {
+  const body = header.nextElementSibling;
+  const chevron = header.querySelector('.phase-chevron');
+  const isOpen = body.classList.toggle('open');
+  chevron.classList.toggle('open', isOpen);
+}
+
+// ── NOTIFICATION ──
+function showNotif(msg) {
+  const el = document.getElementById('notif');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 2800);
+}
+
+// ── DATE UTILS ──
+function getTodayStr() {
+  return new Date().toISOString().slice(0, 10);
+}
+function getYesterdayStr() {
+  const d = new Date();
+  d.setDate(d.getDate() - 1);
+  return d.toISOString().slice(0, 10);
+}
+
+// ── INIT ──
+loadState();
+// Set today's date
+const now = new Date();
+document.getElementById('today-date').textContent =
+  now.getFullYear() + '年' + (now.getMonth()+1) + '月' + now.getDate() + '日';
+updateUI();
+</script>
+</body>
+</html>
